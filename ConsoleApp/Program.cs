@@ -8,6 +8,12 @@ public class Program
     static async Task Main()
     {
         var stopwatch = Stopwatch.StartNew();
+
+        int totalSpaces = await CountSpacesInThreeFilesAsync("file1.txt", "file2.txt", "file3.txt");
+        Console.WriteLine($"Итого: {totalSpaces} пробелов");
+        Console.WriteLine($"Время выполнения: {stopwatch.ElapsedMilliseconds} мс");
+        Console.WriteLine($"=============================");
+
         int allspaces = 0;
         var files = await GetFilesinDirectory(Environment.CurrentDirectory);
 
@@ -35,12 +41,30 @@ public class Program
         stopwatch.Stop();
         Console.WriteLine($"Время выполнения: {stopwatch.ElapsedMilliseconds} мс");
     }
+    public static async Task<int> CountSpacesInThreeFilesAsync(params string[] filePaths)
+    {
+        var tasks = new List<Task<int>>();
+        
+        foreach (var filePath in filePaths)
+        {
+            tasks.Add(CountSpaces(filePath));
+        }
+        
+        int[] results = await Task.WhenAll(tasks);
+        int totalCount = results.Sum();
+        
+        Console.WriteLine($"Всего пробелов в файлах: {totalCount}");
+        return totalCount;
+    }
+
     public static async Task<List<string>> GetFilesinDirectory(string path)
     {
         List<string> txtFiles = new List<string>();
         try
         {
-            var files = Directory.EnumerateFiles(path, "*.txt", SearchOption.AllDirectories);
+            var files = await Task.Run(() => 
+                Directory.EnumerateFiles(path, "*.txt", SearchOption.AllDirectories)
+            );
             txtFiles.AddRange(files);
         }
         catch (UnauthorizedAccessException ex)
