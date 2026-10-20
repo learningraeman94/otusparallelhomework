@@ -18,7 +18,7 @@ public class Program
         //     Console.WriteLine($"Пробелы в {file}: {res}");
         //     allspaces += res;
         // }
-        // это был синхронный подход, параллельный 
+        // это был синхронный подход, не параллельный 
 
         var tasks = files.Select(file => CountSpaces(file)).ToList();
 
