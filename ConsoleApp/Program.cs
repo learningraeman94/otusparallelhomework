@@ -9,7 +9,7 @@ public class Program
     {
         var stopwatch = Stopwatch.StartNew();
         int allspaces = 0;
-        var files = GetFilesinDirectory(Environment.CurrentDirectory);
+        var files = await GetFilesinDirectory(Environment.CurrentDirectory);
 
         // foreach(var file in files)
         // {
@@ -35,7 +35,7 @@ public class Program
         stopwatch.Stop();
         Console.WriteLine($"Время выполнения: {stopwatch.ElapsedMilliseconds} мс");
     }
-    public static List<string> GetFilesinDirectory(string path)
+    public static async Task<List<string>> GetFilesinDirectory(string path)
     {
         List<string> txtFiles = new List<string>();
         try
