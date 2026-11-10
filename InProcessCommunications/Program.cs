@@ -51,11 +51,11 @@ class Program
     public static void PrintEnvironment()
     {
         Console.WriteLine($"## Environment");
-        Console.WriteLine($"OS: {RuntimeInformation.OSDescription}");
-        Console.WriteLine($"Framework: {Environment.Version}");
-        Console.WriteLine($"Processors: {Environment.ProcessorCount}");
-        Console.WriteLine($"Machine Name: {Environment.MachineName}");
-        Console.WriteLine($"64-bit Process: {Environment.Is64BitProcess}");
+        Console.WriteLine($"OS: {RuntimeInformation.OSDescription} \\");
+        Console.WriteLine($"Framework: {Environment.Version} \\");
+        Console.WriteLine($"Processors: {Environment.ProcessorCount} \\");
+        Console.WriteLine($"Machine Name: {Environment.MachineName} \\");
+        Console.WriteLine($"64-bit Process: {Environment.Is64BitProcess} \\");
         Console.WriteLine($"64-bit OS: {Environment.Is64BitOperatingSystem}");
     }
     static int[] getArray(int size)

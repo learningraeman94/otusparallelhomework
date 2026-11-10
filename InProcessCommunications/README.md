@@ -1,11 +1,11 @@
 
 ## Environment
-OS: Ubuntu 24.04.5 LTS
-Framework: 9.0.22
-Processors: 4
-Machine Name: codeserver
-64-bit Process: True
-64-bit OS: True
+OS: Ubuntu 24.04.5 LTS \
+Framework: 9.0.22 \
+Processors: 4 \
+Machine Name: codeserver \
+64-bit Process: True \
+64-bit OS: True 
 ## 100000
 |Тип|Stopwatch.Elapsed|
 |---|---|
